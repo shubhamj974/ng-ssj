@@ -1,0 +1,30 @@
+.main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form-auto {
+    max-width: 600px;
+    width: 100%;
+
+    h3.heading {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .dontAcc {
+      display: block;
+      margin: 16px 0 0;
+      a:link,
+      a:visited {
+        color: red;
+      }
+    }
+  }
+}

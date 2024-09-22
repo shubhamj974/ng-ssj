@@ -1,0 +1,161 @@
+<div class="row">
+  <div class="col-md-6">
+    <ng-container *ngIf="isAccount; else signUp">
+      <div class="main">
+        <div class="form-auto">
+          <mat-card class="mat-elevation-z24">
+            <div class="text-center">
+              <h3 class="heading">Log in</h3>
+            </div>
+            <div class="example-container">
+              <mat-form-field appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input
+                  #userName
+                  matInput
+                  placeholder="pat@example.com"
+                  [formControl]="email"
+                  required
+                />
+                <mat-error *ngIf="email.invalid">{{
+                  getErrorMessage()
+                }}</mat-error>
+              </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Enter your password</mat-label>
+              <input
+                #userPass
+                appNoPastePassword
+                matInput
+                [type]="hide ? 'password' : 'text'"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+
+            <div class="text-right">
+              <button
+                mat-raised-button
+                color="primary"
+                type="button"
+                class="btn-block"
+                (click)="onLogin(userName.value, userPass.value)"
+              >
+                Log in
+              </button>
+            </div>
+            <small class="dontAcc">
+              Don't have an account?
+              <a
+                mat-button
+                color="accent"
+                (click)="isAccount = !isAccount"
+                class="text-decoration-none"
+                >Register</a
+              >
+            </small>
+          </mat-card>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- signUp -->
+
+    <ng-template #signUp>
+      <div class="main">
+        <div class="form-auto">
+          <mat-card class="mat-elevation-z24">
+            <div class="text-center">
+              <h3 class="heading">Sign Up</h3>
+            </div>
+            <mat-form-field appearance="fill">
+              <mat-label>Enter your email</mat-label>
+              <input
+                #userName
+                matInput
+                placeholder="pat@example.com"
+                [formControl]="email"
+                required
+              />
+              <mat-error *ngIf="email.invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Enter your password</mat-label>
+              <input
+                matInput
+                appNoPastePassword
+                [type]="hide ? 'password' : 'text'"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>Confirm your password</mat-label>
+              <input
+                #userPass
+                matInput
+                appNoPastePassword
+                [type]="hide ? 'password' : 'text'"
+              />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
+            </mat-form-field>
+            <div class="text-right">
+              <button
+                mat-raised-button
+                (click)="register(userName.value, userPass.value)"
+                color="primary"
+                type="button"
+                class="btn-block"
+              >
+                Sign up
+              </button>
+            </div>
+            <small class="dontAcc">
+              I have already account?
+              <a
+                mat-button
+                color="primary"
+                (click)="isAccount = !isAccount"
+                class="text-decoration-none"
+                >Log in</a
+              >
+            </small>
+          </mat-card>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
